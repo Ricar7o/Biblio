@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :ISBN
       t.integer :year
       t.string :publisher
+      t.string  :cover_picture
 
       t.timestamps
     end

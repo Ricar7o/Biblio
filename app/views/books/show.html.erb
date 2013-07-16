@@ -25,6 +25,11 @@
   <%= @book.publisher %>
 </p>
 
+<p>
+  <b>Cover Picture:</b>
+  <%= @book.cover_picture %>
+</p>
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
