@@ -2,3 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.book {
+  box-shadow: 5px 5px 20px #333;
+  margin: 10px;
+  position: relative;
+  -moz-perspective: 100px;
+  -moz-transform: rotateY(-3deg);
+  -webkit-transform: perspective(100) rotateY(-3deg);
+  outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+  box-shadow: none;
+  margin: 0;
+}
+
+.book img {
+  vertical-align: middle;
+  position: relative;
+  max-width: 100%;
+}
+
+.books {
+  display: inline-block;
+  -moz-perspective: 100px;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.book:before,
+.book:after {
+  position: absolute;
+  top: 2%;
+  height: 96%;
+  content: ' ';
+  z-index: -1;
+}
+
+.book:before {
+  width: 100%;
+  left: 7.5%;
+  background-color: #5a2d18;
+  box-shadow: 5px 5px 20px #333;
+}
+
+.book:after {
+  width: 5%;
+  left: 100%;
+  background-color: #EFEFEF;
+  box-shadow: inset 0px 0px 5px #aaa;
+  -moz-transform: rotateY(20deg);
+  -webkit-transform: perspective(100) rotateY(20deg);
+}
+
+.book_info {
+  display: inline-block;
+  margin-left: 60px;
+  position: absolute;
+  top: 60px;
+}
+
+.book_info p {
+  font-size: 1.2em;
+}

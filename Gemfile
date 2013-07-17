@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 gem 'better_errors'
 gem 'hirb'
 gem 'binding_of_caller'
-
+gem 'carrierwave'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 
 # Gems used only for assets and not required

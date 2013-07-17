@@ -7,6 +7,7 @@
     <th>Isbn</th>
     <th>Year</th>
     <th>Publisher</th>
+    <th>Cover</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,7 @@
     <td><%= book.ISBN %></td>
     <td><%= book.year %></td>
     <td><%= book.publisher %></td>
+    <td><%= book.picture %></td>
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
     <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +29,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Book', new_book_path %>

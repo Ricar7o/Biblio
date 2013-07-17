@@ -1,35 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @book.title %>
-</p>
+  <div class="books">
+    <div class="book">
+      <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
+    </div>
+  </div>
 
-<p>
-  <b>Author:</b>
-  <%= @book.author %>
-</p>
+  <div class="book_info">
+    
+      <h4>Title:</h4>
+      <p>
+      <%= @book.title %>
+    </p>
 
-<p>
-  <b>Isbn:</b>
-  <%= @book.ISBN %>
-</p>
+    <p>
+      <h4>Author:</h4>
+      <%= @book.author %>
+    </p>
 
-<p>
-  <b>Year:</b>
-  <%= @book.year %>
-</p>
+    <p>
+      <h4>ISBN:</h4>
+      <%= @book.ISBN %>
+    </p>
 
-<p>
-  <b>Publisher:</b>
-  <%= @book.publisher %>
-</p>
+    <p>
+      <h4>Year:</h4>
+      <%= @book.year %>
+    </p>
 
-<p>
-  <b>Cover Picture:</b>
-  <%= @book.cover_picture %>
-</p>
+    <p>
+      <h4>Publisher:</h4>
+      <%= @book.publisher %>
+    </p>
+  </div>
 
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+  <div>
+    <%= link_to 'Edit', edit_book_path(@book) %> |
+    <%= link_to 'Back', books_path %>
+  </div>
