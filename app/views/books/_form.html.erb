@@ -12,29 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Title", class: "span5" %>
   </div>
   <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
+    <%= f.text_field :author, placeholder: "Author", class: "span3" %>
   </div>
   <div class="field">
-    <%= f.label :ISBN %><br />
-    <%= f.text_field :ISBN %>
+    <%= f.text_field :ISBN, placeholder: "ISBN", class: "span2", maxlength: "13" %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
-    <%= f.number_field :year %>
+    <%= f.number_field :year, placeholder: "Year", class: "span1", max: Time.now.year, min: "0" %>
   </div>
   <div class="field">
-    <%= f.label :publisher %><br />
-    <%= f.text_field :publisher %>
+    <%= f.text_field :publisher, placeholder: "Publisher" %>
   </div>
   <div class="field">
-    <%= f.label :picture %><br />
+    <%= f.label :picture %>
     <%= f.file_field :picture %>
   </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>

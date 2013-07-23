@@ -1,40 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-  <div class="books">
-    <div class="book">
-      <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
-    </div>
+<div class="books">
+  <div class="book">
+    <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
   </div>
+</div>
 
-  <div class="book_info">
-    
-      <h4>Title:</h4>
-      <p>
-      <%= @book.title %>
-    </p>
+<div class="book_info">
+  
+  <h1><%= @book.title %></h1>
 
-    <p>
-      <h4>Author:</h4>
-      <%= @book.author %>
-    </p>
+  <h4>
+    <span>by </span>
+    <%= @book.author %>
+    <span> (<%= @book.year %>)</span>
+  </h4>
 
-    <p>
-      <h4>ISBN:</h4>
-      <%= @book.ISBN %>
-    </p>
+  <br>
+  <p>
+    <span>ISBN: </span>
+    <%= @book.ISBN %>
+  </p>
 
-    <p>
-      <h4>Year:</h4>
-      <%= @book.year %>
-    </p>
+  <p>
+    <span>Published by: </span>
+    <%= @book.publisher %>
+  </p>
+</div>
 
-    <p>
-      <h4>Publisher:</h4>
-      <%= @book.publisher %>
-    </p>
-  </div>
-
-  <div>
-    <%= link_to 'Edit', edit_book_path(@book) %> |
-    <%= link_to 'Back', books_path %>
-  </div>
+<div>
+  <%= link_to('Edit', edit_book_path(@book)) + " | " if user_signed_in? && @book.user == current_user %>
+  <%= link_to 'Back', books_path %>
+</div>

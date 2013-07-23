@@ -7,6 +7,11 @@ body {
   padding-bottom: 40px;
 }
 
+#alert {
+  color: red;
+  font-weight: bold;
+}
+
 .book {
   box-shadow: 5px 5px 20px #333;
   margin: 10px;
@@ -64,6 +69,14 @@ body {
   top: 60px;
 }
 
-.book_info p {
-  font-size: 1.2em;
-}
+  .book_info h3 > span {
+    font-size: 0.7em;
+  }
+
+  .book_info p {
+    font-size: 1.2em;
+  }
+
+  .book_info p > span {
+    font-size: 0.7em;
+  }

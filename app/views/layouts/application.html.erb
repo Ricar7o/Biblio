@@ -14,13 +14,23 @@
       <div class="container">
         <a class="brand" href="/">Biblio</a>
         <ul class="nav">
-          <li><a href="/books/new"><i class="icon-plus-sign"></i> Add a book</a></li>
+          <% if user_signed_in? %>
+            <li><a href="/books/new"><i class="icon-plus-sign"></i> Add a book</a></li>
+            <li><%= link_to "<i class='icon-user'></i> ".html_safe + current_user.first_name, edit_user_registration_path %></li>
+            <li><%= link_to "<i class='icon-chevron-right'></i> Log out".html_safe, destroy_user_session_path, :method => :delete %></li>
+            <!-- <li><a href="/users/sign_out" method="delete"><i class="icon-chevron-right"></i> Log out</a></li> -->
+          <% else %>
+            <li><a href="/users/sign_in"><i class="icon-home"></i> Log in</a></li>
+            <li><a href="/users/sign_up"><i class="icon-chevron-up"></i> Sign up</a></li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="container">
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
     <%= yield %>
   </div>
 
