@@ -15,3 +15,19 @@
 //= require_tree .
 // Loads all Bootstrap javascripts
 //= require bootstrap
+
+function displayBookInfo(identifier) {
+  book = {id: identifier};
+  // $('.book_info').load('/books/mini_info', book);
+  $('.book_information').show();
+  $('.book_information').append('Test_' + identifier);
+}
+
+function hideBookInfo() {
+  $('.book_information').hide();
+}
+
+// $('.books img').hover(displayBookInfo($(this).attr('name')), hideBookInfo());
+$('.books img').click(function(){
+  alert('clicked');
+});

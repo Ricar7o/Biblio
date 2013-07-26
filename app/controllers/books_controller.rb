@@ -40,19 +40,20 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    begin
-      @book = current_user.books.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to action: 'index', alert: "You can only edit your own books."
-    end
+      unless @book = current_user.books.where(id: params[:id]).first
+        redirect_to books_path, alert: "You can only edit your own books."
+      end
   end
 
   # POST /books
   # POST /books.json
   def create
-    before_filter :authenticate_user!
 
     @book = current_user.books.new(params[:book])
+    puts "////////////////////"
+    puts params[:book]
+    puts @book.inspect
+    puts "////////////////////"
 
     respond_to do |format|
       if @book.save
@@ -68,7 +69,6 @@ class BooksController < ApplicationController
   # PUT /books/1
   # PUT /books/1.json
   def update
-    before_filter :authenticate_user!
 
     @book = current_user.books.find(params[:id])
 
@@ -94,4 +94,13 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def mini_info
+    @book = Book.find(params[:id])
+    info = ''
+    info << '<h4>' + @book.title + '</h4>'
+    info << '<p>' + @book.author + '</p>'
+    return info
+  end
+  
 end

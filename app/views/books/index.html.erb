@@ -30,4 +30,18 @@
 <% end %>
 </table>
 
+<div class="book_information" style="visibility: hidden;"></div>
+
+<% @books.each do |book| %>
+  <div class="index books">
+    <div class="book">
+      <% if book.remote_cover.nil? %>
+        <%= image_tag(book.picture, width: "150", alt: book.title, name: book.id) %>
+      <% else %>
+        <%= image_tag(book.remote_cover, width: "150", alt: book.title, name: book.id) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <br />

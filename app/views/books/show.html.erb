@@ -1,32 +1,42 @@
 <div class="books">
   <div class="book">
-    <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
+    <% if @book.remote_cover.nil? %>
+      <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
+    <% else %>
+      <%= image_tag(@book.remote_cover, width: "250", alt: @book.title) %>
+    <% end %>
   </div>
 </div>
 
 <div class="book_info">
   
-  <h1><%= @book.title %></h1>
+  <h1><%= @book.title.to_s %></h1>
 
   <h4>
     <span>by </span>
     <%= @book.author %>
-    <span> (<%= @book.year %>)</span>
+    <span> (<%= @book.year.to_s %>)</span>
   </h4>
 
   <br>
   <p>
     <span>ISBN: </span>
-    <%= @book.ISBN %>
+    <%= @book.ISBN.to_s %>
   </p>
 
   <p>
     <span>Published by: </span>
-    <%= @book.publisher %>
+    <%= @book.publisher.to_s %>
+  </p>
+
+  <p>
+    <span>Description: </span>
+    <br>
+    <blockquote><%= @book.description.to_s.html_safe %></blockquote>
   </p>
 </div>
 
-<div>
+<div class="navigation_links">
   <%= link_to('Edit', edit_book_path(@book)) + " | " if user_signed_in? && @book.user == current_user %>
   <%= link_to 'Back', books_path %>
 </div>

@@ -2,7 +2,7 @@ Biblio::Application.routes.draw do
   devise_for :users
   
   resources :books
-
+  get 'books/mini_info/:id' => 'books#mini_info'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
