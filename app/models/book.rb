@@ -22,14 +22,10 @@ class Book < ActiveRecord::Base
           self.author = book[:authors][:author][0][:name]
         end
       end
-      puts "========================="
-      puts "Picture_URL in the Book object is #{self.picture_url.inspect}"
-      puts "Picture in the Book object is #{self.picture.inspect}"
-      puts "========================="
 
       self.publisher = book[:publisher] if self.publisher.empty?
       self.title = book[:title] if self.title.empty?
-      self.year = book[:publication_year].to_i if self.year.nil? || self.year.empty?
+      self.year = book[:publication_year].to_i if self.year.nil?
       self.remote_cover = book[:image_url] if self.picture.to_s == ''
       self.description = book[:description] if self.description.empty?
     # rescue

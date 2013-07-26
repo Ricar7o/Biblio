@@ -1,42 +1,49 @@
-<div class="books">
-  <div class="book">
-    <% if @book.remote_cover.nil? %>
-      <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
-    <% else %>
-      <%= image_tag(@book.remote_cover, width: "250", alt: @book.title) %>
-    <% end %>
-  </div>
-</div>
 
-<div class="book_info">
-  
-  <h1><%= @book.title.to_s %></h1>
-
-  <h4>
-    <span>by </span>
-    <%= @book.author %>
-    <span> (<%= @book.year.to_s %>)</span>
-  </h4>
-
-  <br>
-  <p>
-    <span>ISBN: </span>
-    <%= @book.ISBN.to_s %>
-  </p>
-
-  <p>
-    <span>Published by: </span>
-    <%= @book.publisher.to_s %>
-  </p>
-
-  <p>
-    <span>Description: </span>
-    <br>
-    <blockquote><%= @book.description.to_s.html_safe %></blockquote>
-  </p>
-</div>
 
 <div class="navigation_links">
-  <%= link_to('Edit', edit_book_path(@book)) + " | " if user_signed_in? && @book.user == current_user %>
-  <%= link_to 'Back', books_path %>
+  <%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_book_path(@book)) + " | " if user_signed_in? && @book.user == current_user %>
+  <%= link_to('<i class="icon-trash"></i> Destroy'.html_safe, @book, method: :delete, data: { confirm: 'Are you sure?' } ) + " | " if user_signed_in? && @book.user == current_user %>
+  <%= link_to '<i class="icon-arrow-left"></i> Back'.html_safe, books_path %>
+</div>
+
+<div class="wrapper">
+  
+  <div class="books">
+    <div class="book">
+      <% if @book.remote_cover.nil? %>
+        <%= image_tag(@book.picture, width: "250", alt: @book.title) %>
+      <% else %>
+        <%= image_tag(@book.remote_cover, width: "250", alt: @book.title) %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="book_info">
+    
+    <h1><%= @book.title.to_s %></h1>
+
+    <h4>
+      <span>by </span>
+      <%= @book.author %>
+      <span> (<%= @book.year.to_s %>)</span>
+    </h4>
+
+    <br>
+    <p>
+      <span>ISBN: </span>
+      <%= @book.ISBN.to_s %>
+    </p>
+
+    <p>
+      <span>Published by: </span>
+      <%= @book.publisher.to_s %>
+    </p>
+
+    <p>
+      <span>Description: </span>
+      <br>
+      <blockquote><%= @book.description.to_s.html_safe %></blockquote>
+    </p>
+  </div>
 </div>

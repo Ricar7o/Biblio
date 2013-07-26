@@ -1,44 +1,18 @@
-<% if user_signed_in? %>
-  <h1><%= current_user.first_name %>'s books</h1>
-<% else %>
-  <h1>All books</h1>
-<% end %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>ISBN</th>
-    <th>Year</th>
-    <th>Publisher</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @books.each do |book| %>
-  <tr>
-    <td><%= book.title %></td>
-    <td><%= book.author %></td>
-    <td><%= book.ISBN %></td>
-    <td><%= book.year %></td>
-    <td><%= book.publisher %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<div class="book_information" style="visibility: hidden;"></div>
+<div class="collection">
+  <% if user_signed_in? %>
+    <h1><%= current_user.first_name %>'s books</h1>
+  <% else %>
+    <h1>All books</h1>
+  <% end %>
+</div>
 
 <% @books.each do |book| %>
   <div class="index books">
     <div class="book">
       <% if book.remote_cover.nil? %>
-        <%= image_tag(book.picture, width: "150", alt: book.title, name: book.id) %>
+        <%= image_tag(book.picture, width: "150", alt: book.title, name: book.id, 'data-toggle' => 'tooltip', title: book.title + " - by " + book.author) %>
       <% else %>
-        <%= image_tag(book.remote_cover, width: "150", alt: book.title, name: book.id) %>
+        <%= image_tag(book.remote_cover, width: "150", alt: book.title, name: book.id, 'data-toggle' => 'tooltip', title: book.title + " - by " + book.author) %>
       <% end %>
     </div>
   </div>

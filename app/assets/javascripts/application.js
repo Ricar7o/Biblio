@@ -18,16 +18,33 @@
 
 function displayBookInfo(identifier) {
   book = {id: identifier};
-  // $('.book_info').load('/books/mini_info', book);
-  $('.book_information').show();
-  $('.book_information').append('Test_' + identifier);
+  $('.book_information').load('/books/mini_info/' + identifier, book);
+  $('.book_information').css('visibility', 'visible');
+  // $('.book_information').append('<p>Test_' + identifier + '</p>');
 }
 
 function hideBookInfo() {
-  $('.book_information').hide();
+  $('.book_information').css('visibility', 'hidden');
 }
 
-// $('.books img').hover(displayBookInfo($(this).attr('name')), hideBookInfo());
-$('.books img').click(function(){
-  alert('clicked');
+$(document).ready(function() {
+  $('.index.books img').tooltip();
+
+  $('.book_information').css('visibility', 'hidden');
+
+  // $('.index.books img').hover(
+  //   function() {
+  //     displayBookInfo($(this).attr('name'));
+  //   },
+  //   hideBookInfo);
+
+  $('.index.books img').click(function() {
+    $(location).attr('href', 'books/' + $(this).attr('name'));
+    // $('.container').load('books/' + $(this).attr('name'));
+  });
+
+  // $('.index.books img').dblclick(function() {
+  //   $(location).attr('href', 'books/' + $(this).attr('name') + '/edit');
+  // });
+
 });

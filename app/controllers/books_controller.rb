@@ -50,10 +50,6 @@ class BooksController < ApplicationController
   def create
 
     @book = current_user.books.new(params[:book])
-    puts "////////////////////"
-    puts params[:book]
-    puts @book.inspect
-    puts "////////////////////"
 
     respond_to do |format|
       if @book.save
@@ -97,10 +93,7 @@ class BooksController < ApplicationController
 
   def mini_info
     @book = Book.find(params[:id])
-    info = ''
-    info << '<h4>' + @book.title + '</h4>'
-    info << '<p>' + @book.author + '</p>'
-    return info
+    render layout: false
   end
-  
+
 end

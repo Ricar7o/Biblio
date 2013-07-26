@@ -7,9 +7,12 @@ body {
   padding-bottom: 40px;
 }
 
+.collection {
+  margin-bottom: 50px;
+}
+
 .navigation_links {
-  width: 100px;
-  margin: 50px auto 0;
+  margin: 0 auto 20px;
 }
 
 #alert {
@@ -17,10 +20,25 @@ body {
   font-weight: bold;
 }
 
+.wrapper {
+  max-width: 100%;
+}
+
+  .wrapper:after {
+    content: "";
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;  
+  }
+
 .book_information {
-  border: 1px solid red;
   background-color: #eee;
   box-shadow: 3px 3px 3px #ddd;
+  color: black;
+  margin: -30px auto 10px;
+  min-width: 50%;
+  min-height: 40px;
 }
 
 .book {
@@ -43,6 +61,7 @@ body {
 
 // 
 .books {
+
   display: inline-block;
   -moz-perspective: 100px;
   -moz-transform-style: preserve-3d;
@@ -80,9 +99,8 @@ body {
 
 .book_info {
   display: inline-block;
-  margin-left: 60px;
-  position: absolute;
-  top: 60px;
+  float: right;
+  margin-top: 20px;
 }
 
   .book_info h3 > span {
@@ -96,3 +114,17 @@ body {
   .book_info p > span {
     font-size: 0.7em;
   }
+
+@media (min-width: 1024px) {
+  .book_info {
+    width: 65%;
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .book_info {
+    width: 70%;
+    margin-top: 0px;
+  }
+}
