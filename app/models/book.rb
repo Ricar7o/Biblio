@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
   def check_against_goodreads
     gr = Goodreads.new
 
-    # begin
+    begin
       book = gr.book_by_isbn(self.ISBN)
       if self.author.empty?
         if book[:authors][:author].first[0] == 'id'
@@ -28,9 +28,9 @@ class Book < ActiveRecord::Base
       self.year = book[:publication_year].to_i if self.year.nil?
       self.remote_cover = book[:image_url] if self.picture.to_s == ''
       self.description = book[:description] if self.description.empty?
-    # rescue
-    #   logger.error "Error in fetching from Goodreads API."
-    # end
+    rescue
+      logger.error "Error in fetching from Goodreads API."
+    end
 
   end
 
