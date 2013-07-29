@@ -10,7 +10,7 @@
   <div class="index books">
     <div class="book">
       <% if book.remote_cover.nil? %>
-        <%= image_tag(book.picture, width: "150", alt: book.title, name: book.id, 'data-toggle' => 'tooltip', title: book.title + " - by " + book.author) %>
+        <%= image_tag(book.picture_url, width: "150", alt: book.title, name: book.id, 'data-toggle' => 'tooltip', title: book.title + " - by " + book.author) %>
       <% else %>
         <%= image_tag(book.remote_cover, width: "150", alt: book.title, name: book.id, 'data-toggle' => 'tooltip', title: book.title + " - by " + book.author) %>
       <% end %>
